@@ -1,6 +1,7 @@
 import socket
 import time
 
+
 def start_server(host='0.0.0.0', port=65432):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((host, port))
@@ -17,7 +18,7 @@ def start_server(host='0.0.0.0', port=65432):
                     if data:
                         print(f"Received data from {addr}: {data.decode()}")
 
-                        if (data === "T1\n"):
+                        if (data == "T1\n"):
                             conn.sendall("T1\n")
                             time.sleep(5)
                             conn.sendall("0.259,0.261,0.258,0.260,0.260")
@@ -39,6 +40,7 @@ def start_server(host='0.0.0.0', port=65432):
                         print(f"No data received from {addr}")
                 except Exception as e:
                     print(f"Error occurred with connection from {addr}: {e}")
+
 
 if __name__ == "__main__":
     start_server()
