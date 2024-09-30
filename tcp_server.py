@@ -21,6 +21,7 @@ def start_server(host='0.0.0.0', port=65432):
                         immediate_response = b"Immediate Response\n"
                         conn.sendall(immediate_response)
                         print(f"Sent immediate response to {addr}")
+
                         
                         # Wait for 5 seconds
                         time.sleep(5)
