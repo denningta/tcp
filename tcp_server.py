@@ -6,7 +6,7 @@ def start_server(host='0.0.0.0', port=65432):
         s.bind((host, port))
         s.listen()
         print(f"Server listening on {host}:{port}")
-        
+
         while True:  # Keep server running
             conn, addr = s.accept()  # Accept client connection
             print(f"Accepted connection from {addr}")
@@ -17,19 +17,24 @@ def start_server(host='0.0.0.0', port=65432):
                     if data:
                         print(f"Received data from {addr}: {data.decode()}")
 
-                        # Send an immediate response
-                        immediate_response = b"Immediate Response\n"
-                        conn.sendall(immediate_response)
-                        print(f"Sent immediate response to {addr}")
+                        if (data === "T1\n"):
+                            conn.sendall("T1\n")
+                            time.sleep(5)
+                            conn.sendall("0.259,0.261,0.258,0.260,0.260")
+                        else:
+                            # Send an immediate response
+                            immediate_response = b"Immediate Response\n"
+                            conn.sendall(immediate_response)
+                            print(f"Sent immediate response to {addr}")
 
-                        
-                        # Wait for 5 seconds
-                        time.sleep(5)
-                        
-                        # Send final response after 5 seconds
-                        final_response = b"Final Response after 5 seconds\n"
-                        conn.sendall(final_response)
-                        print(f"Sent final response to {addr}")
+                            # Wait for 5 seconds
+                            time.sleep(5)
+
+                            # Send final response after 5 seconds
+                            final_response = b"Final Response after 5 seconds\n"
+                            conn.sendall(final_response)
+                            print(f"Sent final response to {addr}")
+
                     else:
                         print(f"No data received from {addr}")
                 except Exception as e:
