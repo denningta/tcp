@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  tcp_server:
+    build: .
+    ports:
+      - "65432:65432"
