@@ -16,9 +16,10 @@ def start_server(host='0.0.0.0', port=65432):
                 try:
                     data = conn.recv(1024)  # Receive data from client
                     if data:
-                        print(f"Received data from {addr}: {data.decode()}")
+                        message = data.decode().strip()
+                        print(f"Received data from {addr}: {message}")
 
-                        if (data.decode() == "T1\n"):
+                        if (message == "T1\n"):
                             conn.sendall("T1\n")
                             time.sleep(5)
                             conn.sendall("0.259,0.261,0.258,0.260,0.260\n")
