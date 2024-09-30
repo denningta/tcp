@@ -18,7 +18,7 @@ def start_server(host='0.0.0.0', port=65432):
                         print(f"Received data from {addr}: {data.decode()}")
 
                         # Send an immediate response
-                        immediate_response = b"Immediate Response"
+                        immediate_response = b"Immediate Response\n"
                         conn.sendall(immediate_response)
                         print(f"Sent immediate response to {addr}")
                         
@@ -26,7 +26,7 @@ def start_server(host='0.0.0.0', port=65432):
                         time.sleep(5)
                         
                         # Send final response after 5 seconds
-                        final_response = b"Final Response after 5 seconds"
+                        final_response = b"Final Response after 5 seconds\n"
                         conn.sendall(final_response)
                         print(f"Sent final response to {addr}")
                     else:
