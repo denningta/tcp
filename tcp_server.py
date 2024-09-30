@@ -18,8 +18,8 @@ def start_server(host='0.0.0.0', port=65432):
                     if data:
                         print(f"Received data from {addr}: {data.decode()}")
 
-                        if (data == "T1\n"):
-                            conn.sendall("T1\n")
+                        if (data == "T1"):
+                            conn.sendall("T1")
                             time.sleep(5)
                             conn.sendall("0.259,0.261,0.258,0.260,0.260")
                         else:
