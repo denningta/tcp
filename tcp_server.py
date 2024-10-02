@@ -15,6 +15,7 @@ def start_server(host='0.0.0.0', port=65432):
             with conn:
                 try:
                     data = conn.recv(1024)  # Receive data from client
+                    print(f"data: {data.decode().strip()}")
                     if data:
                         message = data.decode().strip()
                         print(f"Received data from {addr}: {message}")
